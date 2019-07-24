@@ -2,9 +2,9 @@
 
 ## Table of Contents
 1. [Introduction](README.md#introduction)
-1. [Pipeline Implementation](README.md#implementation)
+1. [Pipeline Implementation](README.md#pipeline-implementation)
 1. [Run Instructions](README.md#run-instructions)
-1. [Exploratory Data Analysis](README.md#eda)
+1. [Exploratory Data Analysis](README.md#exploratory-data-analysis)
 
 ## Introduction
 
@@ -35,6 +35,25 @@ I validated and transformed the data in three ways:
 2. Date to datetime64 transformation. The dates in the original dataset are of `String` type. To enable future use of time-oriented queries on this data, I transformed the dates to NumPy datetime64 dtype.
 
 3. Checking loan amount. The requested dollar amount of each loan should always be greater or equal to the actual funded amount. I specifically perform this check. No anomalies were found.
+
+### Project Structure
+```
+.
+├── README.md
+├── data
+│   └── loan.csv
+├── eda.ipynb
+├── images
+│   ├── good_loan.png
+│   └── total_loan_amount.png
+├── run.sh
+├── setup_db_properties.sh
+└── src
+    ├── __pycache__
+    │   └── module.cpython-37.pyc
+    ├── main.py
+    └── module.py
+```
 
 ## Run Instructions
 
