@@ -4,8 +4,6 @@ import pandas as pd
 from datetime import datetime
 from module import *
 from sqlalchemy import create_engine
-import psycopg2
-import io
 import os
 
 
@@ -32,28 +30,12 @@ def main(inputData):
     for col in colToTransDatetime:
         transformDatetime(df, col, timeFormat)
 
-    #df["desc"] = df["desc"].str.replace(",","")
 
     #Write to database
     engine = create_engine('postgresql://'+os.environ['POSTGRESQL_USER']+':'+os.environ['POSTGRESQL_PASSWORD']+'@'+os.environ['POSTGRESQL_HOST_IP']+':'+os.environ['POSTGRESQL_PORT']+'/'+os.environ['POSTGRESQL_DATABASE'],echo=False)
-    #engine = create_engine('postgresql+psycopg2://'+os.environ['POSTGRESQL_USER']+':'+os.environ['POSTGRESQL_PASSWORD']+'@'+os.environ['POSTGRESQL_HOST_IP']+':'+os.environ['POSTGRESQL_PORT']+'/'+os.environ['POSTGRESQL_DATABASE'],echo=False)
 
     df.to_sql(os.environ['POSTGRESQL_TABLE'], engine, chunksize=10000, if_exists = 'replace')
-    '''
-    df.head(0).to_sql(os.environ['POSTGRESQL_TABLE'], engine, if_exists='replace',index=False)
-    conn = engine.raw_connection()
-    cur = conn.cursor()
-    #cur.execute("DROP TABLE " + os.environ['POSTGRESQL_TABLE'])
-    #empty_table = pd.io.sql.get_schema(df, os.environ['POSTGRESQL_TABLE'], con = engine)
-    #empty_table = empty_table.replace('"', '')
-    output = io.StringIO()
-    df.to_csv(output, header=False, index=False, sep=',')
-    output.seek(0)
-    #contents = output.getvalue()
-    #cur.execute(empty_table)
-    cur.copy_from(output, os.environ['POSTGRESQL_TABLE'], null='') # null values become ''
-    conn.commit()
-    '''
+
 
 if __name__ == '__main__':
     """
