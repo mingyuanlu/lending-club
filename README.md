@@ -62,7 +62,7 @@ I validated and transformed the data in three ways:
 ### Dependencies
 1. Python 2.7 or above
 2. Python standard library
-3. NumPy, Pandas, SqlAlchemy
+3. NumPy, Pandas, SqlAlchemy, Seaborn, Matplotlib
 
 ### Preparing PostgreSQL database
 
