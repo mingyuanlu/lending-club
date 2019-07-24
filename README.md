@@ -13,7 +13,9 @@ LendingClub is a U.S. peer-to-peer lending company. It enables borrowers to crea
 In this project, I am provided with a dataset containing the loan origination listings of LendingClub from 2007 to 2018. I will build an ETL pipeline for data, with the goal for providing interactive and flexible querying for data scientists and data analysts to explore and train machine learning models using the data. This involves:
 
 •	Creating a data model / schema in a database or storage engine
+
 •	Developing code that will persist the dataset into this storage system in a fully automated way
+
 •	Including any data validation routines that may be necessary
 
 Furthermore, I am going to perform exploratory data analysis (EDA) using this data. This serves as a good way to acquire a sense of the data and inform pipeline engineering as well as future analyses.
@@ -84,10 +86,15 @@ One can observe that the amount of loans grew rapidly from millions of dollars i
 We may also want to understand the amount of loans that are in good conditions, and compare that value to the total amount of loans. Here, I categorize the following loan statuses as 'bad':
 
 • Charged Off
+
 • Late (31-120 days)
+
 • In Grace Period
+
 • Late (16-30 days)
+
 • Does not meet the credit policy. Status:Charged Off
+
 • Default
 
 The rest of the statuses are considered 'good'. The following figure shows the percentage of the good/bad loans, and how the fraction of good loans evolve over time:
