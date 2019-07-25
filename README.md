@@ -49,6 +49,9 @@ The original table is split into these five tables:
 - debt settlement: contains information about debt settlements
 Each table in principle represents an independent set of properties. For example, a borrower with a loan does not need to have a joint applicant.
 
+The schema can be visualized as
+![](./images/schema.png)
+
 Overall the pipeline can be visualized as
 ![](./images/pipeline.png)
 
@@ -88,7 +91,7 @@ Install PostgreSQL on your desired machine. Edit the file `setup_db_properties.s
 
 Before running the code, be sure to do
 ```
-EXPORT LENDING_CLUB_DIR=/path/to/this/repo
+$ export LENDING_CLUB_DIR=/path/to/this/repo
 ```
 You can add this to your `.bashrc` file and source it.
 
@@ -109,7 +112,9 @@ The `run.sh` script will source the database settings, and create/append data to
 One can imagine that the data is updated periodically, where new data files show up in the /data directory. Using the `schedule_cron.sh` script, one can schedule periodic checks for new files, and process them.
 
 To do so, simple edit the following line in `schedule_cron.sh`
-```echo "0 0 * * * /bin/bash /path/to/your/detect_new_files.sh"```
+```
+echo "0 0 * * * /bin/bash /path/to/your/detect_new_files.sh"
+```
 Choose the check frequency and edit the path to your `detect_new_files.sh` script. This example checks and processed new files daily.
 
 Then, simply do
