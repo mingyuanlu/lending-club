@@ -4,4 +4,4 @@
 source setup_db_properties.sh
 
 #Run main python script
-python src/main.py $1
+python ${LENDING_CLUB_DIR}/src/main.py $1
