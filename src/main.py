@@ -4,8 +4,6 @@ import pandas as pd
 from datetime import datetime
 from module import *
 from sqlalchemy import create_engine
-import psycopg2
-import io
 import os
 
 
