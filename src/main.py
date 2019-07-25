@@ -57,8 +57,8 @@ def main(input_data):
     debt_settlement_table = df[debt_settlement_cols]
 
     #Need to keep member_id in the loan table
-    cols_to_drop = list(set(borrower_table + joint_table + hardship_table +
-    debt_settlement_table)).remove('member_id')
+    cols_to_drop = list(set(borrower_cols + joint_cols + hardship_cols + debt_settlement_cols))
+    cols_to_drop = [x for x in cols_to_drop if x!='member_id']
     df.drop(cols_to_drop, axis=1)
 
 
